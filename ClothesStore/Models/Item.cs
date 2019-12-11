@@ -24,9 +24,9 @@ namespace ClothesStore.Models
         public Item()
         {
             AvailableSizes = new List<string>();
-           /* {
-                "XS", "S", "M", "L", "XL", "XXL"
-            }; */
+           // {
+            //    "XS", "S", "M", "L", "XL", "XXL"
+            //}; 
 
             ItemId = Guid.NewGuid();
         }

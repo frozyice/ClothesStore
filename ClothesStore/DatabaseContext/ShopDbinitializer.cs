@@ -11,13 +11,17 @@ namespace ClothesStore.DatabaseContext
 {
     public class ShopDbInitializer : DropCreateDatabaseIfModelChanges<ShopDbContext>
     {
-        protected override void Seed(ShopDbContext context) => context.Items.AddOrUpdate(x => x.Name,
+        protected override void Seed(ShopDbContext context)
+        {
+            context.Items.AddOrUpdate(x => x.Name,
                 new Item
                 {
                     Name = "Jeans",
                     Category = CategoryEnum.Men,
-                    
+                    Price = 55
+
                 }
                 );
+        }
     }
 }
