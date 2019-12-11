@@ -8,6 +8,7 @@ namespace ClothesStore.Models
         public Guid ShoppingcartId { get; set; }
         public DateTime DateCreated { get; set; }
         public bool isPaid { get; set; }
+        public double Sum;
 
         public virtual ICollection<Item> Items { get; set; }
 
