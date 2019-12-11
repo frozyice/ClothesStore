@@ -9,12 +9,13 @@ namespace ClothesStore.Models
     {
         public Guid ItemId { get; set; }
         public string Name { get; set; }
-        public enum Category
+        public enum CategoryEnum
         {
             Men = 0,
             Women = 1,
             Kids = 2
         }
+        public CategoryEnum Category;
         public List<string> AvailableSizes { get; set; }
         public double Price { get; set; }
 
@@ -22,10 +23,10 @@ namespace ClothesStore.Models
 
         public Item()
         {
-            AvailableSizes = new List<string>
-            {
+            AvailableSizes = new List<string>();
+           /* {
                 "XS", "S", "M", "L", "XL", "XXL"
-            };
+            }; */
 
             ItemId = Guid.NewGuid();
         }
