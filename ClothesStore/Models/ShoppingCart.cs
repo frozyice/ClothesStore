@@ -14,9 +14,14 @@ namespace ClothesStore.Models
         public ShoppingCart()
         {
             ShoppingcartId = Guid.NewGuid();
+            Sum = 0;
             DateCreated = DateTime.Now;
-
             Items = new List<Item>();
         }
+		public void AddToCart(Item item)
+		{
+			Items.Add(item);
+			Sum += item.Price;
+		}
     }
 }
