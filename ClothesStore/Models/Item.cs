@@ -7,16 +7,16 @@ namespace ClothesStore.Models
 {
     public class Item
     {
-        private Guid ItemId { get; set; }
-        private string Name { get; set; }
-        private enum Category
+        public Guid ItemId { get; set; }
+        public string Name { get; set; }
+        public enum Category
         {
             Men = 0,
             Women = 1,
             Kids = 2
         }
-        private List<string> AvailableSizes { get; set; }
-        private double Price { get; set; }
+        public List<string> AvailableSizes { get; set; }
+        public double Price { get; set; }
 
         public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
 
