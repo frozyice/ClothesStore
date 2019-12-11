@@ -7,6 +7,7 @@ namespace ClothesStore.Models
 {
     public class Item
     {
+        private Guid ItemId { get; set; }
         private string Name { get; set; }
         private enum Category
         {
@@ -23,6 +24,8 @@ namespace ClothesStore.Models
             {
                 "XS", "S", "M", "L", "XL", "XXL"
             };
+
+            ItemId = Guid.NewGuid();
         }
     }
 }
