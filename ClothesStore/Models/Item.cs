@@ -18,6 +18,8 @@ namespace ClothesStore.Models
         private List<string> AvailableSizes { get; set; }
         private double Price { get; set; }
 
+        public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
+
         public Item()
         {
             AvailableSizes = new List<string>
