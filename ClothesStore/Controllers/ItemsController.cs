@@ -15,10 +15,12 @@ namespace ClothesStore.Controllers
     {
         private ShopDbContext db = new ShopDbContext();
 
+        
         // GET: Items
         public ActionResult Index()
         {
-            return View(db.Items.ToList());
+            List<Item> items = db.Items.OrderBy(x => x.Name).ToList();
+            return View(items);
         }
 
         // GET: Items/Details/5

@@ -10,6 +10,8 @@ namespace ClothesStore.DatabaseContext
 {
     public class ShopDbContext : DbContext
     {
+        public ShopDbContext() : base("ClothesStore") { }
+
         public DbSet<Item> Items { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
 

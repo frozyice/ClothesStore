@@ -13,7 +13,8 @@ namespace ClothesStore.DatabaseContext
     {
         protected override void Seed(ShopDbContext context)
         {
-            context.Items.AddOrUpdate(x => x.Name,
+            context.Items.AddOrUpdate(
+                x => x.Name,
                 new Item
                 {
                     Name = "Jeans",
