@@ -20,7 +20,54 @@ namespace ClothesStore.DatabaseContext
                     Name = "Jeans",
                     Category = CategoryEnum.Men,
                     Price = 55
-
+                },
+                new Item
+                {
+                    Name = "Jeans",
+                    Category = CategoryEnum.Women,
+                    Price = 40
+                },
+                new Item
+                {
+                    Name = "Jeans",
+                    Category = CategoryEnum.Kids,
+                    Price = 25
+                },
+                new Item
+                {
+                    Name = "Jacket",
+                    Category = CategoryEnum.Men,
+                    Price = 80
+                },
+                new Item
+                {
+                    Name = "Jacket",
+                    Category = CategoryEnum.Women,
+                    Price = 90
+                },
+                new Item
+                {
+                    Name = "Jacket",
+                    Category = CategoryEnum.Kids,
+                    Price = 55
+                },
+                new Item
+                {
+                    Name = "Shoes",
+                    Category = CategoryEnum.Men,
+                    Price = 60
+                },
+                new Item
+                {
+                    Name = "Shoes",
+                    Category = CategoryEnum.Women,
+                    Price = 50
+                },
+                new Item
+                {
+                    Name = "Shoes",
+                    Category = CategoryEnum.Kids,
+                    Price = 35
                 }
                 );
         }
