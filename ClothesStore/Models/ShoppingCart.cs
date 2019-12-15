@@ -9,7 +9,7 @@ namespace ClothesStore.Models
 
         public DateTime DateCreated { get; set; }
 
-        public bool isPaid { get; set; }
+        public Boolean isPaid { get; set; }
 
         public double Sum;
 
@@ -21,6 +21,7 @@ namespace ClothesStore.Models
             Sum = 0;
             DateCreated = DateTime.Now;
             Items = new List<Item>();
+            isPaid = false;
         }
 		public void AddToCart(Item item)
 		{

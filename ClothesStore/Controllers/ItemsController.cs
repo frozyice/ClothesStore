@@ -38,13 +38,13 @@ namespace ClothesStore.Controllers
             return View(item);
         }
 
-        public ActionResult AddToCart(Guid? id)
+        public ActionResult AddToCart(Guid? ShoppingcartId)
 		{
-			if (id == null)
+			if (ShoppingcartId == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			Item items = db.Items.Find(id);
+			Item items = db.Items.Find(ShoppingcartId);
 			if (items == null)
 			{
 				return HttpNotFound();
