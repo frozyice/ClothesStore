@@ -28,5 +28,16 @@ namespace ClothesStore.Models
 			Items.Add(item);
 			Sum += item.Price;
 		}
+
+        public void MakeTransaction()
+        {
+            isPaid = true;
+        }
+
+        public void RemoveFromCart(Item item)
+        {
+            Items.Remove(item);
+            Sum -= item.Price;
+        }
     }
 }

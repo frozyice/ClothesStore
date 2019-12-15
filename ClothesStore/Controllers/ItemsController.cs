@@ -38,13 +38,13 @@ namespace ClothesStore.Controllers
             return View(item);
         }
 
-        public ActionResult AddToCart(Guid? ShoppingcartId)
+        public ActionResult AddToCart(Guid? id)
 		{
-			if (ShoppingcartId == null)
+			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			Item items = db.Items.Find(ShoppingcartId);
+			Item items = db.Items.Find(id);
 			if (items == null)
 			{
 				return HttpNotFound();
@@ -57,7 +57,7 @@ namespace ClothesStore.Controllers
 			ShoppingCart.AddToCart(items);
 			db.SaveChanges();
 			//return RedirectToAction("Index", "ShoppingCarts");
-			return RedirectToAction("Details", "ShoppingCarts", new { id = ShoppingCart.Id });
+			return RedirectToAction("Details", "ShoppingCarts", new { id = ShoppingCart.ShoppingcartId });
 		}
 
         protected override void Dispose(bool disposing)
