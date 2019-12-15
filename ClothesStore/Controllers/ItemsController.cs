@@ -38,86 +38,27 @@ namespace ClothesStore.Controllers
             return View(item);
         }
 
-        // GET: Items/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Items/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ItemId,Name,Price")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                item.ItemId = Guid.NewGuid();
-                db.Items.Add(item);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(item);
-        }
-
-        // GET: Items/Edit/5
-        public ActionResult Edit(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Item item = db.Items.Find(id);
-            if (item == null)
-            {
-                return HttpNotFound();
-            }
-            return View(item);
-        }
-
-        // POST: Items/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ItemId,Name,Price")] Item item)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(item).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(item);
-        }
-
-        // GET: Items/Delete/5
-        public ActionResult Delete(Guid? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Item item = db.Items.Find(id);
-            if (item == null)
-            {
-                return HttpNotFound();
-            }
-            return View(item);
-        }
-
-        // POST: Items/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
-        {
-            Item item = db.Items.Find(id);
-            db.Items.Remove(item);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        public ActionResult AddToCart(Guid? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Item items = db.Items.Find(id);
+			if (items == null)
+			{
+				return HttpNotFound();
+			}
+			var ShoppingCart = db.ShoppingCarts.OrderByDescending(x => x.DateCreated).FirstOrDefault();
+			if (ShoppingCart == null)
+			{
+				ShoppingCart = db.ShoppingCarts.Add(new ShoppingCart());
+			}
+			ShoppingCart.AddToCart(items);
+			db.SaveChanges();
+			//return RedirectToAction("Index", "ShoppingCarts");
+			return RedirectToAction("Details", "ShoppingCarts", new { id = ShoppingCart.Id });
+		}
 
         protected override void Dispose(bool disposing)
         {
