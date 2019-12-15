@@ -17,55 +17,55 @@ namespace ClothesStore.DatabaseContext
                 x => x.Name,
                 new Item
                 {
-                    Name = "Jeans",
+                    Name = "Mens Jeans",
                     Category = CategoryEnum.Men,
                     Price = 55
                 },
                 new Item
                 {
-                    Name = "Jeans",
+                    Name = "Womens Jeans",
                     Category = CategoryEnum.Women,
                     Price = 40
                 },
                 new Item
                 {
-                    Name = "Jeans",
+                    Name = "Kids Jeans",
                     Category = CategoryEnum.Kids,
                     Price = 25
                 },
                 new Item
                 {
-                    Name = "Jacket",
+                    Name = "Mens Jacket",
                     Category = CategoryEnum.Men,
                     Price = 80
                 },
                 new Item
                 {
-                    Name = "Jacket",
+                    Name = "Womens Jacket",
                     Category = CategoryEnum.Women,
                     Price = 90
                 },
                 new Item
                 {
-                    Name = "Jacket",
+                    Name = "Kids Jacket",
                     Category = CategoryEnum.Kids,
                     Price = 55
                 },
                 new Item
                 {
-                    Name = "Shoes",
+                    Name = "Mens Shoes",
                     Category = CategoryEnum.Men,
                     Price = 60
                 },
                 new Item
                 {
-                    Name = "Shoes",
+                    Name = "Womens Shoes",
                     Category = CategoryEnum.Women,
                     Price = 50
                 },
                 new Item
                 {
-                    Name = "Shoes",
+                    Name = "Kids Shoes",
                     Category = CategoryEnum.Kids,
                     Price = 35
                 }
