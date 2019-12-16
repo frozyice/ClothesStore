@@ -15,7 +15,7 @@ namespace ClothesStore.Models
             Women = 1,
             Kids = 2
         }
-        public CategoryEnum Category;
+        public CategoryEnum Category { get; set; }
         public string AvailableSizes { get; set; }
         public double Price { get; set; }
 
