@@ -4,14 +4,14 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Your Shopping Cart</h2>
 
 <div>
-    <h4>ShoppingCart</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
+            Date Created
         </dt>
 
         <dd>
@@ -19,18 +19,18 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsPaid)
+            Total Sum
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sum)€
+        </dd>
+        <dt>
+            Check Out Completed
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IsPaid)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Sum)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sum)
         </dd>
 
 
@@ -53,13 +53,15 @@
                 @Html.DisplayFor(Model => item.Category)
             </td>
             <td>
-                @Html.DisplayFor(Model => item.Price)
+                @Html.DisplayFor(Model => item.Price)€
             </td>
         </tr>
         }
     </table>
 </div>
+
 <p>
-    @Html.ActionLink("Check Out", "MakeTransaction", new { id = Model.ShoppingcartId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <input type="button" class="btn btn-default" value="Back to Items" onclick="location.href='@Url.Action("Index","Items")'" />
+    <input type="button" class="btn btn-default" value="Purchase History" onclick="location.href='@Url.Action("Index","ShoppingCarts")'" />
+    <input type="button" class="btn btn-success" value="Check Out" onclick="location.href='@Url.Action("MakeTransaction","ShoppingCarts",new { id = Model.ShoppingcartId })'" />
 </p>

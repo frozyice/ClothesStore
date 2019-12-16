@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<!--h2>Index</h2-->
 
 
 <table class="table">
@@ -16,7 +16,7 @@
             @Html.DisplayNameFor(model => model.Sum)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.IsPaid)
+            Check Out Completed
         </th>
         <th></th>
     </tr>
@@ -27,7 +27,7 @@
             @Html.DisplayFor(modelItem => item.DateCreated)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Sum)
+            @Html.DisplayFor(modelItem => item.Sum)€
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsPaid)
@@ -38,6 +38,7 @@
             @Html.ActionLink("Details", "Details", new { id = item.ShoppingcartId }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingcartId })
         </td>
+
     </tr>
 }
 
