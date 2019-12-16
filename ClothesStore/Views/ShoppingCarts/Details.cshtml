@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Your Shopping Cart</h2>
+<h2>Shopping Cart</h2>
 
 <div>
     
@@ -40,7 +40,8 @@
         <tr>
             <th>Item</th>
             <th>Category</th>
-            <th>Price</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
 
         </tr>
         @foreach (var item in Model.Items)
@@ -55,6 +56,9 @@
             <td>
                 @Html.DisplayFor(Model => item.Price)€
             </td>
+            <td>
+                @Html.DisplayFor(Model => item.Quantity)
+            </td>
         </tr>
         }
     </table>
@@ -63,5 +67,8 @@
 <p>
     <input type="button" class="btn btn-default" value="Back to Items" onclick="location.href='@Url.Action("Index","Items")'" />
     <input type="button" class="btn btn-default" value="Purchase History" onclick="location.href='@Url.Action("Index","ShoppingCarts")'" />
-    <input type="button" class="btn btn-success" value="Check Out" onclick="location.href='@Url.Action("MakeTransaction","ShoppingCarts",new { id = Model.ShoppingcartId })'" />
+    @if (!Model.IsPaid)
+    { 
+        <input type="button" class="btn btn-success" value="Check Out" onclick="location.href='@Url.Action("MakeTransaction","ShoppingCarts",new { id = Model.ShoppingcartId })'" />
+    }
 </p>

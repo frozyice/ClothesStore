@@ -6,13 +6,13 @@
 
 <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Are you sure you want to delete this shoppingcart?</h3>
 <div>
-    <h4>ShoppingCart</h4>
+
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.DateCreated)
+            Date Created
         </dt>
 
         <dd>
@@ -20,21 +20,54 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsPaid)
+            Total Sum
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sum)€
+        </dd>
+        <dt>
+            Check Out Completed
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IsPaid)
         </dd>
 
+
+
     </dl>
+    <table class="table">
+        <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Price</th>
+
+        </tr>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(Model => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(Model => item.Category)
+                </td>
+                <td>
+                    @Html.DisplayFor(Model => item.Price)€
+                </td>
+            </tr>
+        }
+    </table>
+
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
+        
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="button" class="btn btn-default" value="Back to Purchase History" onclick="location.href='@Url.Action("Index","ShoppingCarts")'" />
+            <input type="submit" value="Delete" class="btn btn-danger" />
         </div>
     }
 </div>

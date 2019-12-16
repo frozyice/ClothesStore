@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<!--h2>Index</h2-->
+<h2>Items</h2>
 
 
 <table class="table">
@@ -19,6 +19,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -31,14 +32,14 @@
                 @Html.DisplayFor(modelItem => item.Category)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
+                @Html.DisplayFor(modelItem => item.Price)€
             </td>
             <td>
 
                 <input type="button" class="btn btn-default" value="Details" onclick="location.href='@Url.Action("Details","Items",new { id = item.ItemId })'" />
             </td>
             <td>
-                <input type="button" class="btn btn-success" value="Add to cart" onclick="location.href='@Url.Action("AddToCart","Items",new { id = item.ItemId })'" />
+                <input type="button" class="btn btn-primary" value="Add to cart" onclick="location.href='@Url.Action("AddToCart","Items",new { id = item.ItemId })'" />
             </td>
         </tr>
     }

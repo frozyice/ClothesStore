@@ -20,56 +20,64 @@ namespace ClothesStore.DatabaseContext
                     Name = "Mens Jeans",
                     Category = CategoryEnum.Men,
                     Price = 55,
-                    AvailableSizes = "M XL"
+                    AvailableSizes = "XS S M XL"
                     
                 },
                 new Item
                 {
                     Name = "Womens Jeans",
                     Category = CategoryEnum.Women,
-                    Price = 40
+                    Price = 40,
+                    AvailableSizes = "XS S M L"
                 },
                 new Item
                 {
                     Name = "Kids Jeans",
                     Category = CategoryEnum.Kids,
-                    Price = 25
+                    Price = 25,
+                    AvailableSizes = "XS S M"
                 },
                 new Item
                 {
                     Name = "Mens Jacket",
                     Category = CategoryEnum.Men,
-                    Price = 80
+                    Price = 80,
+                    AvailableSizes = "S M L XL"
                 },
                 new Item
                 {
                     Name = "Womens Jacket",
                     Category = CategoryEnum.Women,
-                    Price = 90
+                    Price = 90,
+                    AvailableSizes = "XS M L XL"
                 },
                 new Item
                 {
                     Name = "Kids Jacket",
                     Category = CategoryEnum.Kids,
-                    Price = 55
+                    Price = 55,
+                    AvailableSizes = "XS S M L XL"
                 },
                 new Item
                 {
                     Name = "Mens Shoes",
                     Category = CategoryEnum.Men,
-                    Price = 60
+                    Price = 60,
+                    AvailableSizes = "XS S M XL"
                 },
                 new Item
                 {
                     Name = "Womens Shoes",
                     Category = CategoryEnum.Women,
-                    Price = 50
+                    Price = 50,
+                    AvailableSizes = "XS S L XL"
                 },
                 new Item
                 {
                     Name = "Kids Shoes",
                     Category = CategoryEnum.Kids,
-                    Price = 35
+                    Price = 35,
+                    AvailableSizes = "XS S M L XL"
                 }
                 );
         }

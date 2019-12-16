@@ -27,6 +27,7 @@ namespace ClothesStore.Models
 		{
 			Items.Add(item);
 			Sum += item.Price;
+            item.Quantity++;
 		}
 
         public void MakeTransaction()

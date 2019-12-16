@@ -18,12 +18,14 @@ namespace ClothesStore.Models
         public CategoryEnum Category { get; set; }
         public string AvailableSizes { get; set; }
         public double Price { get; set; }
+        public int Quantity { get; set; }
 
         public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
 
         public Item()
         {
             ItemId = Guid.NewGuid();
+            Quantity = 0;
         }
 
     }

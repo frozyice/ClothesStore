@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<!--h2>Index</h2-->
+<h2>Purchase History</h2>
 
 
 <table class="table">
@@ -18,6 +18,7 @@
         <th>
             Check Out Completed
         </th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -33,10 +34,15 @@
             @Html.DisplayFor(modelItem => item.IsPaid)
         </td>
 
+       
         <td>
-            
-            @Html.ActionLink("Details", "Details", new { id = item.ShoppingcartId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingcartId })
+            <input type="button" class="btn btn-default" value="Details" onclick="location.href='@Url.Action("Details","ShoppingCarts",new { id = item.ShoppingcartId })'" />
+        </td>
+        <td>
+            @if (!item.IsPaid)
+            {
+                <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "ShoppingCarts", new { id = item.ShoppingcartId })'" />
+            }
         </td>
 
     </tr>

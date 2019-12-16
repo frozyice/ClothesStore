@@ -30,7 +30,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Price)
+            @Html.DisplayFor(model => model.Price)€
         </dd>
 
         <dt>
@@ -46,5 +46,5 @@
 
 <p>
     <input type="button" class="btn btn-default" value="Back to Items" onclick="location.href='@Url.Action("Index","Items")'" />
-    <input type="button" class="btn btn-success" value="Add to cart" onclick="location.href='@Url.Action("AddToCart","Items",new { id = Model.ItemId })'" />
+    <input type="button" class="btn btn-primary" value="Add to cart" onclick="location.href='@Url.Action("AddToCart","Items",new { id = Model.ItemId })'" />
 </p>

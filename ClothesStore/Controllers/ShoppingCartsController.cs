@@ -137,6 +137,20 @@ namespace ClothesStore.Controllers
             return RedirectToAction("Index", "ShoppingCarts");
         }
 
+        public ActionResult ShowCart()
+        {
+            var ShoppingCart = db.ShoppingCarts.OrderByDescending(x => x.DateCreated).FirstOrDefault();
+            if (ShoppingCart == null || ShoppingCart.IsPaid == true)
+            {
+                //ShoppingCart = db.ShoppingCarts.Add(new ShoppingCart());
+                //db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
+            else
+                return RedirectToAction("Details", "ShoppingCarts", new { id = ShoppingCart.ShoppingcartId });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
