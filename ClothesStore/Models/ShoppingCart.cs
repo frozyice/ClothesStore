@@ -9,9 +9,9 @@ namespace ClothesStore.Models
 
         public DateTime DateCreated { get; set; }
 
-        public Boolean isPaid { get; set; }
+        public Boolean IsPaid { get; set; }
 
-        public double Sum;
+        public double Sum { get; set; }
 
         public virtual ICollection<Item> Items { get; set; }
 
@@ -21,7 +21,7 @@ namespace ClothesStore.Models
             Sum = 0;
             DateCreated = DateTime.Now;
             Items = new List<Item>();
-            isPaid = false;
+            //IsPaid = false;
         }
 		public void AddToCart(Item item)
 		{
@@ -31,7 +31,7 @@ namespace ClothesStore.Models
 
         public void MakeTransaction()
         {
-            isPaid = true;
+            IsPaid = true;
         }
 
         public void RemoveFromCart(Item item)

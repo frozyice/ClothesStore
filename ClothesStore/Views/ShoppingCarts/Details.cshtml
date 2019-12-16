@@ -19,16 +19,47 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.isPaid)
+            @Html.DisplayNameFor(model => model.IsPaid)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.isPaid)
+            @Html.DisplayFor(model => model.IsPaid)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sum)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sum)
         </dd>
 
+
+
     </dl>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Category</th>
+            <th>Price</th>
+
+        </tr>
+        @foreach (var item in Model.Items)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(Model => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(Model => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(Model => item.Price)
+            </td>
+        </tr>
+        }
+    </table>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ShoppingcartId }) |
+    @Html.ActionLink("Check Out", "MakeTransaction", new { id = Model.ShoppingcartId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

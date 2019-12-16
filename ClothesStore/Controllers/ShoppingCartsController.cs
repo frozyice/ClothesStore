@@ -18,7 +18,9 @@ namespace ClothesStore.Controllers
         // GET: ShoppingCarts
         public ActionResult Index()
         {
-            return View(db.ShoppingCarts.ToList());
+            List<ShoppingCart> carts = db.ShoppingCarts.OrderByDescending(x => x.DateCreated).ToList();
+            return View(carts);
+            
         }
 
         // GET: ShoppingCarts/Details/5
@@ -115,6 +117,24 @@ namespace ClothesStore.Controllers
             db.ShoppingCarts.Remove(shoppingCart);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult MakeTransaction(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ShoppingCart shoppingCart = db.ShoppingCarts.Find(id);
+            if (shoppingCart == null)
+            {
+                return HttpNotFound();
+            }
+            shoppingCart.IsPaid = true;
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "ShoppingCarts");
         }
 
         protected override void Dispose(bool disposing)

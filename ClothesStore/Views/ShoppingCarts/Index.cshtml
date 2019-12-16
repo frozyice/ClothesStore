@@ -6,16 +6,17 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.DateCreated)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.isPaid)
+            @Html.DisplayNameFor(model => model.Sum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsPaid)
         </th>
         <th></th>
     </tr>
@@ -26,12 +27,16 @@
             @Html.DisplayFor(modelItem => item.DateCreated)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.isPaid)
+            @Html.DisplayFor(modelItem => item.Sum)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ShoppingcartId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ShoppingcartId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ShoppingcartId })
+            @Html.DisplayFor(modelItem => item.IsPaid)
+        </td>
+
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id = item.ShoppingcartId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ShoppingcartId })
         </td>
     </tr>
 }

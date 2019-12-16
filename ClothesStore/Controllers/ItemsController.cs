@@ -50,7 +50,7 @@ namespace ClothesStore.Controllers
 				return HttpNotFound();
 			}
 			var ShoppingCart = db.ShoppingCarts.OrderByDescending(x => x.DateCreated).FirstOrDefault();
-			if (ShoppingCart == null || ShoppingCart.isPaid==true)
+			if (ShoppingCart == null || ShoppingCart.IsPaid==true)
 			{
 				ShoppingCart = db.ShoppingCarts.Add(new ShoppingCart());
 			}
