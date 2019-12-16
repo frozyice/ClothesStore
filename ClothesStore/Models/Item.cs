@@ -16,16 +16,15 @@ namespace ClothesStore.Models
             Kids = 2
         }
         public CategoryEnum Category;
-        public List<string> AvailableSizes { get; set; }
+        public string AvailableSizes { get; set; }
         public double Price { get; set; }
 
         public virtual ICollection<ShoppingCart> ShoppingCarts { get; set; }
 
         public Item()
         {
-           AvailableSizes = new List<string>();
-
             ItemId = Guid.NewGuid();
         }
+
     }
 }

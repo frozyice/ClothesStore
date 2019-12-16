@@ -17,6 +17,13 @@
         <dd>
             @Html.DisplayFor(model => model.Name)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Price)
@@ -26,9 +33,17 @@
             @Html.DisplayFor(model => model.Price)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableSizes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableSizes)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ItemId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Add to cart", "AddToCart", new { id = Model.ItemId })
 </p>

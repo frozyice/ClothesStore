@@ -19,7 +19,9 @@ namespace ClothesStore.DatabaseContext
                 {
                     Name = "Mens Jeans",
                     Category = CategoryEnum.Men,
-                    Price = 55
+                    Price = 55,
+                    AvailableSizes = "M XL"
+                    
                 },
                 new Item
                 {
