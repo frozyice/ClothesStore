@@ -58,7 +58,10 @@
                 @Html.DisplayFor(Model => item.Article.Price)€
             </td>
             <td>
-                <input type="button" class="btn btn-danger" value="Remove" onclick="location.href='@Url.Action("RemoveFromCart","Items",new { id = item.ItemID })'" />
+                @if (!Model.IsPaid)
+                {
+                    <input type="button" class="btn btn-danger" value="Remove" onclick="location.href='@Url.Action("RemoveFromCart","Items",new { id = item.ItemID })'" />
+                }
             </td>
 
         </tr>
