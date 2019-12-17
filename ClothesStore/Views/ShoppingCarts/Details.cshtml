@@ -40,25 +40,27 @@
         <tr>
             <th>Item</th>
             <th>Category</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
+            <th>Price</th>
+            <th></th>
+            
 
         </tr>
         @foreach (var item in Model.Items)
         {
         <tr>
             <td>
-                @Html.DisplayFor(Model => item.Name)
+                @Html.DisplayFor(Model => item.Article.Name)
             </td>
             <td>
-                @Html.DisplayFor(Model => item.Category)
+                @Html.DisplayFor(Model => item.Article.Category)
             </td>
             <td>
-                @Html.DisplayFor(Model => item.Price)€
+                @Html.DisplayFor(Model => item.Article.Price)€
             </td>
             <td>
-                @Html.DisplayFor(Model => item.Quantity)
+                <input type="button" class="btn btn-danger" value="Remove" onclick="location.href='@Url.Action("RemoveFromCart","Items",new { id = item.ItemID })'" />
             </td>
+
         </tr>
         }
     </table>
@@ -68,7 +70,10 @@
     <input type="button" class="btn btn-default" value="Back to Items" onclick="location.href='@Url.Action("Index","Items")'" />
     <input type="button" class="btn btn-default" value="Purchase History" onclick="location.href='@Url.Action("Index","ShoppingCarts")'" />
     @if (!Model.IsPaid)
-    { 
-        <input type="button" class="btn btn-success" value="Check Out" onclick="location.href='@Url.Action("MakeTransaction","ShoppingCarts",new { id = Model.ShoppingcartId })'" />
+    {
+        if (Model.Sum > 0)
+        {
+            <input type="button" class="btn btn-success" value="Check Out" onclick="location.href='@Url.Action("MakeTransaction", "ShoppingCarts", new { id = Model.ShoppingcartId })'" />
+        }
     }
 </p>

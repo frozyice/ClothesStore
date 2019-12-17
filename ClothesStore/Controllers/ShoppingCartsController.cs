@@ -114,6 +114,7 @@ namespace ClothesStore.Controllers
         public ActionResult DeleteConfirmed(Guid id)
         {
             ShoppingCart shoppingCart = db.ShoppingCarts.Find(id);
+            shoppingCart.Items.Clear();
             db.ShoppingCarts.Remove(shoppingCart);
             db.SaveChanges();
             return RedirectToAction("Index");

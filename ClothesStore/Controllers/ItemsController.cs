@@ -19,12 +19,51 @@ namespace ClothesStore.Controllers
         // GET: Items
         public ActionResult Index()
         {
-            List<Item> items = db.Items.OrderBy(x => x.Name).ToList();
+            List<Article> items = db.Articles.OrderBy(x => x.Name).ToList();
             return View(items);
         }
 
         // GET: Items/Details/5
+        //OK
         public ActionResult Details(Guid? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Article article = db.Articles.Find(id);
+            if (article == null)
+            {
+                return HttpNotFound();
+            }
+            return View(article);
+        }
+
+        //OK
+        public ActionResult AddToCart(Guid? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			Article article = db.Articles.Find(id);
+			if (article == null)
+			{
+				return HttpNotFound();
+			}
+			ShoppingCart ShoppingCart = db.ShoppingCarts.OrderByDescending(x => x.DateCreated).FirstOrDefault();
+			if (ShoppingCart == null || ShoppingCart.IsPaid==true)
+			{
+				ShoppingCart = db.ShoppingCarts.Add(new ShoppingCart());
+			}
+            ShoppingCart.AddToCart(article);
+            //ShoppingCart.AddToCart(items);
+			db.SaveChanges();
+			//return RedirectToAction("Index", "ShoppingCarts");
+			return RedirectToAction("Details", "ShoppingCarts", new { id = ShoppingCart.ShoppingcartId });
+		}
+
+        public ActionResult RemoveFromCart(Guid? id)
         {
             if (id == null)
             {
@@ -35,30 +74,15 @@ namespace ClothesStore.Controllers
             {
                 return HttpNotFound();
             }
-            return View(item);
-        }
+            ShoppingCart ShoppingCart = db.ShoppingCarts.OrderByDescending(x => x.DateCreated).FirstOrDefault();
+            if (ShoppingCart != null && ShoppingCart.IsPaid == false)
+            {
+                ShoppingCart.RemoveFromCart(item);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Details", "ShoppingCarts", new { id = ShoppingCart.ShoppingcartId });
 
-        public ActionResult AddToCart(Guid? id)
-		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
-			Item items = db.Items.Find(id);
-			if (items == null)
-			{
-				return HttpNotFound();
-			}
-			var ShoppingCart = db.ShoppingCarts.OrderByDescending(x => x.DateCreated).FirstOrDefault();
-			if (ShoppingCart == null || ShoppingCart.IsPaid==true)
-			{
-				ShoppingCart = db.ShoppingCarts.Add(new ShoppingCart());
-			}
-			ShoppingCart.AddToCart(items);
-			db.SaveChanges();
-			//return RedirectToAction("Index", "ShoppingCarts");
-			return RedirectToAction("Details", "ShoppingCarts", new { id = ShoppingCart.ShoppingcartId });
-		}
+        }
 
         protected override void Dispose(bool disposing)
         {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ClothesStore.Models.Item>
+﻿@model IEnumerable<ClothesStore.Models.Article>
 
 @{
     ViewBag.Title = "Index";
@@ -36,10 +36,10 @@
             </td>
             <td>
 
-                <input type="button" class="btn btn-default" value="Details" onclick="location.href='@Url.Action("Details","Items",new { id = item.ItemId })'" />
+                <input type="button" class="btn btn-default" value="Details" onclick="location.href='@Url.Action("Details","Items",new { id = item.ArticleId })'" />
             </td>
             <td>
-                <input type="button" class="btn btn-primary" value="Add to cart" onclick="location.href='@Url.Action("AddToCart","Items",new { id = item.ItemId })'" />
+                <input type="button" class="btn btn-primary" value="Add to cart" onclick="location.href='@Url.Action("AddToCart","Items",new { id = item.ArticleId })'" />
             </td>
         </tr>
     }

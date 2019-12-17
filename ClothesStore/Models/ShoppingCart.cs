@@ -23,11 +23,12 @@ namespace ClothesStore.Models
             Items = new List<Item>();
             //IsPaid = false;
         }
-		public void AddToCart(Item item)
+		public void AddToCart(Article article)
 		{
-			Items.Add(item);
-			Sum += item.Price;
-            item.Quantity++;
+            Item newItem = new Item();
+            Items.Add(newItem);
+            newItem.Article = article;
+            Sum += article.Price;
 		}
 
         public void MakeTransaction()
@@ -38,7 +39,7 @@ namespace ClothesStore.Models
         public void RemoveFromCart(Item item)
         {
             Items.Remove(item);
-            Sum -= item.Price;
+            Sum -= item.Article.Price;
         }
     }
 }
